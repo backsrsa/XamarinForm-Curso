@@ -26,7 +26,7 @@ namespace MyOrders.ViewModels
                 },
                 new MenuItemViewModel()
                 {
-                    Icon = "ic_action_client",
+                    Icon = "ic_action_clients",
                     Title = "Clients",
                     PageName = "ClientsPage"
                 },

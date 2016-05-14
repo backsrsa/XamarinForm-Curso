@@ -4,7 +4,28 @@
              x:Class="MyOrders.Pages.MenuPage"
              Title="Menú"
              Icon ="ic_action_menu.png"
-             BackgroundColor="{StaticResource MenuColor}">
-  <Label Text="Menu" VerticalOptions="Center" HorizontalOptions="Center" 
-         TextColor="{StaticResource MenuFontColor}"/>
+             BackgroundColor="{StaticResource MenuColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}">
+  
+  <ListView ItemsSource="{Binding Menu}" HasUnevenRows="True">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Icon}"
+                   WidthRequest="50" 
+                   HeightRequest="50"/>
+            <Label Text="{Binding Title}" 
+                   Grid.Column="1" 
+                   VerticalOptions="Center" 
+                   TextColor="{StaticResource MenuFontColor}"/>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>
