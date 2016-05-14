@@ -1,23 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
+using MyOrders.Pages;
 
 namespace MyOrders.ViewModels
 {
     public class MainViewModel
     {
-        public MainViewModel()
-        {
-            LoadMenu();
-            LoadData();
-        }
+
+        #region Propiedades
+
+        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public ObservableCollection<OrderViewModel> Orders { get; set; }
+
+        #endregion
+
+        #region Metodos
 
         private void LoadData()
         {
-            Orders =new ObservableCollection<OrderViewModel>();
+            Orders = new ObservableCollection<OrderViewModel>();
             for (int i = 0; i < 5; i++)
             {
                 Orders.Add(new OrderViewModel()
@@ -26,9 +29,8 @@ namespace MyOrders.ViewModels
                     DeliveryDate = DateTime.Today,
                     Description = "Lorem Ipsum dolor sit amet, cosectetur adipiscing elit."
                 });
-            }   
+            }
         }
-
 
         private void LoadMenu()
         {
@@ -38,7 +40,7 @@ namespace MyOrders.ViewModels
                 {
                     Icon = "ic_action_orders",
                     Title = "Orders",
-                    PageName = "NewOrderPage"
+                    PageName = "MainPage"
                 },
                 new MenuItemViewModel()
                 {
@@ -61,7 +63,41 @@ namespace MyOrders.ViewModels
             };
         }
 
-        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
-        public ObservableCollection<OrderViewModel> Orders { get; set; }
+
+
+        #endregion
+
+        #region Commands
+
+        public ICommand GoToCommand
+        {
+            get
+            {
+                { return new RelayCommand<string>(GoTo); }
+            }
+
+        }
+        private void GoTo(string pageName)
+        {
+            switch (pageName)
+            {
+                case "NewOrderPage":
+                    App.Navigator.PushAsync(new NewOrderPage());
+                    break;
+
+            }
+        }
+        #endregion
+
+        #region Constructor
+
+        public MainViewModel()
+        {
+            LoadMenu();
+            LoadData();
+        }
+
+        #endregion
+
     }
 }

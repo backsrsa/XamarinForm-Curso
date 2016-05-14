@@ -5,7 +5,7 @@
              BackgroundColor="{StaticResource BackgroundColor}"
              Title="My Orders"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-  
+
   <ListView ItemsSource="{Binding Orders}"
             HasUnevenRows="True">
     <ListView.ItemTemplate>
@@ -40,6 +40,6 @@
   </ListView>
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Icon="ic_action_add.png"></ToolbarItem>
+    <ToolbarItem Icon="ic_action_add.png" Command="{Binding  GoToCommand}" CommandParameter="NewOrderPage"></ToolbarItem>
   </ContentPage.ToolbarItems>
 </ContentPage>

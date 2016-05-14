@@ -13,6 +13,7 @@ namespace MyOrders
         }
 
         public static NavigationPage Navigator { get; set; }
+        public static MasterPage Master { get; set; }
 
         protected override void OnStart()
         {
