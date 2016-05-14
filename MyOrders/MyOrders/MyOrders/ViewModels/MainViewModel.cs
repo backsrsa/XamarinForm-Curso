@@ -12,7 +12,23 @@ namespace MyOrders.ViewModels
         public MainViewModel()
         {
             LoadMenu();
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            Orders =new ObservableCollection<OrderViewModel>();
+            for (int i = 0; i < 5; i++)
+            {
+                Orders.Add(new OrderViewModel()
+                {
+                    Title = "Lorem Ipsum",
+                    DeliveryDate = DateTime.Today,
+                    Description = "Lorem Ipsum dolor sit amet, cosectetur adipiscing elit."
+                });
+            }   
+        }
+
 
         private void LoadMenu()
         {
@@ -46,5 +62,6 @@ namespace MyOrders.ViewModels
         }
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public ObservableCollection<OrderViewModel> Orders { get; set; }
     }
 }

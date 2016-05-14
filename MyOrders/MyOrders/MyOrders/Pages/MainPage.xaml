@@ -3,12 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyOrders.Pages.MainPage"
              BackgroundColor="{StaticResource BackgroundColor}"
-             Title="My Orders">
+             Title="My Orders"
+             BindingContext="{Binding Main, Source={StaticResource Locator}">
+  <ListView ItemsSource="{Binding Orders}"
+            HasUnevenRows="True">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="icon.png"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                   VerticalOptions="Start"/>
+            <StackLayout Grid.Column="1">
+              <Label Text="{Binding Title}"
+                 VerticalOptions="Center"
+                 TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Description}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Delivery, StringFormat='yyyy/MM/dd'}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource MenuFontColor}"/>
+            </StackLayout>
 
-  
-  
-  
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+
+
   <ContentPage.ToolbarItems>
-<ToolbarItem Icon="ic_action_add.png"></ToolbarItem>
+    <ToolbarItem Icon="ic_action_add.png"></ToolbarItem>
   </ContentPage.ToolbarItems>
 </ContentPage>
