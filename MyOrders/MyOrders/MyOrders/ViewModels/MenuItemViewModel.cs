@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MyOrders.Pages;
 
@@ -15,7 +10,7 @@ namespace MyOrders.ViewModels
 
         public string Icon { get; set; }
         public string Title { get; set; }
-        public string PageName { get; set; } 
+        public string PageName { get; set; }
 
         #endregion
 
@@ -46,7 +41,6 @@ namespace MyOrders.ViewModels
 
                 case "MainPage":
                     App.Navigator.PopToRootAsync();
-                    App.Navigator.PushAsync(new MainPage());
                     break;
             }
         }
