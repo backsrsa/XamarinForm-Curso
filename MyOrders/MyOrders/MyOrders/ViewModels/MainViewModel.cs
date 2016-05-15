@@ -3,12 +3,13 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MyOrders.Pages;
+using MyOrders.Services;
 
 namespace MyOrders.ViewModels
 {
     public class MainViewModel
     {
-
+        private NavigationService navigationService;
         #region Propiedades
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
@@ -79,20 +80,16 @@ namespace MyOrders.ViewModels
         }
         private void GoTo(string pageName)
         {
-            switch (pageName)
-            {
-                case "NewOrderPage":
-                    App.Navigator.PushAsync(new NewOrderPage());
-                    break;
-
-            }
+            navigationService.Navigate(pageName);
         }
+
         #endregion
 
         #region Constructor
 
         public MainViewModel()
         {
+            navigationService = new NavigationService();
             LoadMenu();
             LoadData();
         }

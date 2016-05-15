@@ -1,11 +1,19 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using MyOrders.Pages;
+using MyOrders.Services;
 
 namespace MyOrders.ViewModels
 {
     public class MenuItemViewModel
     {
+        private readonly NavigationService _navigationService;
+
+        public MenuItemViewModel()
+        {
+            _navigationService=new NavigationService();
+        }
+
         #region Propiedades
 
         public string Icon { get; set; }
@@ -18,31 +26,9 @@ namespace MyOrders.ViewModels
         {
             get
             {
-                return new RelayCommand(Navigate);
+                return new RelayCommand(()=>_navigationService.Navigate(PageName));
             }
         }
 
-        private void Navigate()
-        {
-            App.Master.IsPresented = false;//para cerrar el menu lateral
-            switch (PageName)
-            {
-                case "AlarmsPage":
-                    App.Navigator.PushAsync(new AlarmsPage());
-                    break;
-
-                case "ClientsPage":
-                    App.Navigator.PushAsync(new ClientsPage());
-                    break;
-
-                case "SettingsPage":
-                    App.Navigator.PushAsync(new SettingsPage());
-                    break;
-
-                case "MainPage":
-                    App.Navigator.PopToRootAsync();
-                    break;
-            }
-        }
     }
 }
