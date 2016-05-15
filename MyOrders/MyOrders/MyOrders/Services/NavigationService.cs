@@ -1,37 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MyOrders.Pages;
+using Xamarin.Forms;
 
 namespace MyOrders.Services
 {
     public class NavigationService
     {
-        public async void Navigate(string PageName)
+        public async void Navigate(string pageName)
         {
             App.Master.IsPresented = false;//para cerrar el menu lateral
-            switch (PageName)
+            switch (pageName)
             {
                 case "AlarmsPage":
-                    await App.Navigator.PushAsync(new AlarmsPage());
+                    await Navigate(new AlarmsPage());
                     break;
 
                 case "ClientsPage":
-                    await App.Navigator.PushAsync(new ClientsPage());
+                    await Navigate(new ClientsPage());
                     break;
 
                 case "SettingsPage":
-                    await App.Navigator.PushAsync(new SettingsPage());
+                    await Navigate(new SettingsPage());
                     break;
 
                 case "MainPage":
                     await App.Navigator.PopToRootAsync();
                     break;
+
+                default:
+                    break;
             }
         }
 
+        //metodo para eliminar el icono back al navegar a una pagina
+        private static async Task Navigate<T>(T page) where T : Page
+        {
+            NavigationPage.SetHasBackButton(page,false);
+            NavigationPage.SetBackButtonTitle(page,"Back");//para IOs
+
+            await App.Navigator.PushAsync(page);
+        }
         
 
     }

@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
-using MyOrders.Pages;
 using MyOrders.Services;
 
 namespace MyOrders.ViewModels
