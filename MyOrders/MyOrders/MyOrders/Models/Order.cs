@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MyOrders.ViewModels
+namespace MyOrders.Models
 {
-    public class OrderViewModel
+   public class Order
     {
         public string Id { get; set; }
         public string Title { get; set; }

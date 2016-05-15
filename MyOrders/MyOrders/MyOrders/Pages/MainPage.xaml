@@ -7,36 +7,9 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
 
   <ListView ItemsSource="{Binding Orders}"
-            HasUnevenRows="True">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <Grid Padding="8">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"></ColumnDefinition>
-              <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Image Source="icon.png"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                   VerticalOptions="Start"/>
-            <StackLayout Grid.Column="1">
-              <Label Text="{Binding Title}"
-                     FontAttributes="Bold"
-                     VerticalOptions="Center"
-                    TextColor="{StaticResource FontColor}"/>
-              <Label Text="{Binding Description}"
-                   VerticalOptions="Center"
-                   TextColor="{StaticResource FontColor}"/>
-              <Label Text="{Binding DeliveryDate, StringFormat='{0:yyyy/MM/dd}'}"
-                   VerticalOptions="Center"
-                   TextColor="{StaticResource MainColor}"/>
-            </StackLayout>
+            HasUnevenRows="True" ItemTemplate="{StaticResource OrderItemTemplate}"
+            >
 
-          </Grid>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
   </ListView>
 
   <ContentPage.ToolbarItems>

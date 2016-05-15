@@ -13,12 +13,15 @@
       <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"></Entry>
       <Label TextColor="{StaticResource FontColor}" Text="Delivery Date"/>
       <DatePicker BackgroundColor="White"></DatePicker>
-      <Button BackgroundColor="{StaticResource MainColor}"
+      <!--<Button BackgroundColor="{StaticResource MainColor}"
               TextColor="{StaticResource MenuFontColor}"
+              Font="{StaticResource GeneralButtonFont}"
               Text="Save"
               HeightRequest="50"
               BorderRadius="25"
-              />
+              />-->
+      <Button Style="{StaticResource GeneralButton}"
+              Text="Save"/>
     </StackLayout>
   </ScrollView>
 </ContentPage>

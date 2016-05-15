@@ -11,14 +11,71 @@
       <Color x:Key="AccentColor1">#cdff00</Color>
       <Color x:Key="AccentColor2">#b8b89f</Color>
       <Color x:Key="BackgroundColor">#f9f9f9</Color>
-      
+
       <!--Menu Color-->
       <Color x:Key="MenuColor">#52656b</Color>
       <Color x:Key="MenuFontColor">#ffffff</Color>
+
+      <!--Fonts-->
+      <OnPlatform x:Key="GeneralButtonFont"
+                  x:TypeArguments="Font"
+                  iOS="12"
+                  Android="14"
+                  WinPhone="16"
+        />
+
+      <!--Styles-->
+      <Style x:Key="GeneralButton"
+             TargetType="Button">
+        <Setter Property="Font"
+                Value="{StaticResource GeneralButtonFont}"></Setter>
+
+        <Setter Property="BorderRadius"
+                Value="20"></Setter>
+
+        <Setter Property="HeightRequest"
+             Value="40"></Setter>
+
+        <Setter Property="BackgroundColor"
+             Value="{StaticResource MainColor}"></Setter>
+
+        <Setter Property="TextColor"
+             Value="White"></Setter>
+
+      </Style>
+      <!--Datatemplate-->
+      <DataTemplate x:Key="OrderItemTemplate">
+        <ViewCell>
+          <Grid Padding="8">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="icon.png"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                   VerticalOptions="Start"/>
+            <StackLayout Grid.Column="1">
+              <Label Text="{Binding Title}"
+                     FontAttributes="Bold"
+                     VerticalOptions="Center"
+                    TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding Description}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource FontColor}"/>
+              <Label Text="{Binding DeliveryDate, StringFormat='{0:yyyy/MM/dd}'}"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource MainColor}"/>
+            </StackLayout>
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+      
       
       <!--Locator-->
       <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
-      
+
     </ResourceDictionary>
   </Application.Resources>
 </Application>

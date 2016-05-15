@@ -9,7 +9,7 @@ namespace MyOrders
         {
             InitializeComponent();
             // The root page of your application
-            MainPage = new MasterPage();
+            MainPage = new WelcomePage();
         }
 
         public static NavigationPage Navigator { get; set; }

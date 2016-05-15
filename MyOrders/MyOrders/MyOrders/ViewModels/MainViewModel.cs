@@ -9,7 +9,7 @@ namespace MyOrders.ViewModels
 {
     public class MainViewModel
     {
-        private NavigationService navigationService;
+        private NavigationService _navigationService;
         #region Propiedades
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
@@ -80,7 +80,21 @@ namespace MyOrders.ViewModels
         }
         private void GoTo(string pageName)
         {
-            navigationService.Navigate(pageName);
+            _navigationService.Navigate(pageName);
+        }
+
+        public ICommand StartCommand
+        {
+            get
+            {
+                return new RelayCommand(Start);
+            }
+        }
+
+        private void Start()
+        {
+            _navigationService.SetMainPage("MasterPage");
+            
         }
 
         #endregion
@@ -89,9 +103,9 @@ namespace MyOrders.ViewModels
 
         public MainViewModel()
         {
-            navigationService = new NavigationService();
+            _navigationService = new NavigationService();
             LoadMenu();
-            LoadData();
+          //  LoadData();
         }
 
         #endregion
