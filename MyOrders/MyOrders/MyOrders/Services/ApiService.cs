@@ -8,9 +8,9 @@ namespace MyOrders.Services
 {
     public class ApiService
     {
-        public async Task<List<>> GetAllOrders()
-        {
+        //public async Task<List<>> GetAllOrders()
+        //{
             
-        }
+        //}
     }
 }
