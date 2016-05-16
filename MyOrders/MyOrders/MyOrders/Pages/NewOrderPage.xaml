@@ -5,14 +5,25 @@
              BackgroundColor="{StaticResource BackgroundColor}"
              Title="New Order"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
-  <ScrollView>
+  <ScrollView BindingContext="{Binding NewOrder}">
     <StackLayout>
       <Label TextColor="{StaticResource FontColor}" Text="Title"/>
-      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"></Entry>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+             Text="{Binding Title, Mode=TwoWay}"></Entry>
+      <Label TextColor="{StaticResource FontColor}" Text="Client"/>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+             Text="{Binding Client, Mode=TwoWay}"></Entry>
       <Label TextColor="{StaticResource FontColor}" Text="Description"/>
-      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"></Entry>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+             Text="{Binding Description , Mode=TwoWay}"></Entry>
+      <Label TextColor="{StaticResource FontColor}" Text="Delivery Information"/>
+      <Entry BackgroundColor="White"  TextColor="{StaticResource FontColor}"
+             Text="{Binding DeliveryInformation, Mode=TwoWay}"></Entry>
       <Label TextColor="{StaticResource FontColor}" Text="Delivery Date"/>
-      <DatePicker BackgroundColor="White"></DatePicker>
+      <DatePicker BackgroundColor="White"
+                  Date="{Binding DeliveryDate, Mode=TwoWay}">
+        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+      </DatePicker>
       <!--<Button BackgroundColor="{StaticResource MainColor}"
               TextColor="{StaticResource MenuFontColor}"
               Font="{StaticResource GeneralButtonFont}"
@@ -21,7 +32,8 @@
               BorderRadius="25"
               />-->
       <Button Style="{StaticResource GeneralButton}"
-              Text="Save"/>
+              Text="Save"
+              Command="{Binding SaveCommand}"/>
     </StackLayout>
   </ScrollView>
 </ContentPage>
